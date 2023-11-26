@@ -1,0 +1,23 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/gdsc?serverTimezone=Asia/Seoul
+        username: root
+        password: 1234
+
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: create
+            
+        properties:
+            format_sql: true
+
+
+        open-in-view: false
+
+    mvc:
+        throw-exception-if-no-handler-found: true
+    web:
+        resources:
+            add-mappings: false
