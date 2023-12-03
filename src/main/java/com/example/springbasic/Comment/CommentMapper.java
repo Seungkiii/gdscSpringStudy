@@ -35,7 +35,7 @@ public class CommentMapper {
         return CommentUpdateRequestDto.builder()
                 .commentCode(comment.getCommentCode())
                 .commentTitle(comment.getCommentTitle())
-                .commentTitle(comment.getCommentTitle())
+                .commentContent(comment.getCommentContent())
                 .build();
     }
 }
