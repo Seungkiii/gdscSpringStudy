@@ -1,6 +1,6 @@
 package com.example.springbasic.Board;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +39,7 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public BoardResponseDto getBoardById(Long id) {
         Optional<Board> boardId = boardRepository.findById(id);
-        Board board = boardId.orElseThrow(() -> new RuntimeException("Board not found with id: " + id));
+        Board board = boardId.orElseThrow(() -> new IllegalStateException("Board not found with id: " + id));
         return new BoardResponseDto(board);
     }
 
@@ -47,7 +47,7 @@ public class BoardServiceImpl implements BoardService {
     @Transactional
     public Long updateBoard(Long id, BoardRequestDto request) {
         Board board = boardRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Board not found with id: " + id));
+                .orElseThrow(() -> new IllegalStateException("Board not found with id: " + id));
 
 
         board.update(request.getTitle(),
@@ -61,7 +61,7 @@ public class BoardServiceImpl implements BoardService {
     @Transactional
     public Long deleteBoard(Long id) {
         Board board = boardRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Board not found with id: " + id));
+                .orElseThrow(() -> new IllegalStateException("Board not found with id: " + id));
 
         // Soft delete 수행
         board.softDelete();
