@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class CommentResponse {
+public class CommentResponseDto {
 
     private Long commentCode;
 

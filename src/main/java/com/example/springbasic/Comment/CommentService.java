@@ -21,7 +21,7 @@ public class CommentService {
     }
 
     @Transactional
-    public CommentResponse updateComment(CommentUpdateRequestDto request, Long id) {
+    public CommentResponseDto updateComment(CommentUpdateRequestDto request, Long id) {
         Comment comment = commentRepository.findById(id)
                 .orElseThrow(IllegalStateException::new);
 
@@ -30,14 +30,14 @@ public class CommentService {
     }
 
 
-    public List<CommentResponse> getAllComments() {
+    public List<CommentResponseDto> getAllComments() {
         List<Comment> comments = commentRepository.findAll();
         return comments.stream()
                 .map(commentMapper::toResponse)
                 .collect(Collectors.toList());
     }
 
-    public CommentResponse getComment(Long id) {
+    public CommentResponseDto getComment(Long id) {
         Comment comment = commentRepository.findById(id).orElseThrow(IllegalStateException::new);
         return commentMapper.toResponse(comment);
     }

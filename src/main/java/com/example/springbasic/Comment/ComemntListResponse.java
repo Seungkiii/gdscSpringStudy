@@ -9,5 +9,5 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 public class ComemntListResponse {
-    private List<CommentResponse> commentList;
+    private List<CommentResponseDto> commentList;
 }

@@ -1,7 +1,5 @@
 package com.example.springbasic.Comment;
 
-import com.example.springbasic.Comment.CommentUpdateRequestDto;
-import com.example.springbasic.Member.Member;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,8 +15,8 @@ public class CommentMapper {
                 .build();
     }
 
-    public CommentResponse toResponse(Comment comment) {
-        return CommentResponse.builder()
+    public CommentResponseDto toResponse(Comment comment) {
+        return CommentResponseDto.builder()
                 .commentCode(comment.getCommentCode())
                 .commentContent(comment.getCommentContent())
                 .commentTitle(comment.getCommentTitle())
@@ -26,10 +24,10 @@ public class CommentMapper {
     }
 
     public ComemntListResponse toListResponse(List<Comment> commentList) {
-        List<CommentResponse> commentResponseList =
+        List<CommentResponseDto> commentResponseDtoList =
                 commentList.stream().map(this::toResponse).collect(Collectors.toList());
         return ComemntListResponse.builder()
-                .commentList(commentResponseList)
+                .commentList(commentResponseDtoList)
                 .build();
     }
 
